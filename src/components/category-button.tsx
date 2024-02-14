@@ -4,12 +4,12 @@ import { clsx } from "clsx"
 
 // Definindo as props para o componente CategoryButton, estendendo PressableProps
 type CategoryProps = PressableProps & {
-    tittle: string // Título do botão da categoria
+    title: string // Título do botão da categoria
     isSelected?: boolean // Propriedade opcional para determinar se o botão está selecionado
 }
 
 // Definição do componente CategoryButton
-export function CategoryButton({ tittle, isSelected, ...rest }: CategoryProps){
+export function CategoryButton({ title, isSelected, ...rest }: CategoryProps){
     return (
         // Componente Pressable representando o botão da categoria
         <Pressable 
@@ -20,7 +20,7 @@ export function CategoryButton({ tittle, isSelected, ...rest }: CategoryProps){
             {...rest} // Espalha as props restantes para o componente Pressable
         >
             {/* Componente Text exibindo o título do botão da categoria com estilos de texto específicos */}
-            <Text className="text-slate-100 font-subtitle text-sm">{tittle}</Text>
+            <Text className="text-slate-100 font-subtitle text-sm">{title}</Text>
         </Pressable>
     )
 }
