@@ -2,6 +2,7 @@
 import { Image, View, Text, TouchableOpacity } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import colors from "tailwindcss/colors";
+import { Link } from "expo-router";
 
 // Definindo as props para o componente Header
 type HeaderProps = {
@@ -23,18 +24,18 @@ export function Header({ title, cartQuantityItems = 0 }: HeaderProps) {
 
       {/* Renderização condicional do ícone de carrinho se houver itens no carrinho */}
       {cartQuantityItems > 0 && (
-        // TouchableOpacity para tornar o ícone clicável
-        <TouchableOpacity className="relative" activeOpacity={0.7}>
-          {/* Marcador de quantidade de itens no carrinho */}
-          <View className="bg-lime-300 w-4 h-4 rounded-full items-center justify-center top-2 z-10 -right-3.5">
-            <Text className="text-slate-900 font-bold text-xs">
-              {cartQuantityItems}
-            </Text>
-          </View>
+        <Link href="/cart" asChild>
+          {/* TouchableOpacity para tornar o ícone clicável */}
+          <TouchableOpacity className="relative" activeOpacity={0.7}>
+            <View className="bg-lime-300 w-4 h-4 rounded-full items-center justify-center top-2 z-10 -right-3.5">
+              <Text className="text-slate-900 font-bold text-xs">
+                {cartQuantityItems}
+              </Text>
+            </View>
 
-          {/* Ícone de sacola de compras */}
-          <Feather name="shopping-bag" color={colors.white} size={24} />
-        </TouchableOpacity>
+            <Feather name="shopping-bag" color={colors.white} size={24} />
+          </TouchableOpacity>
+        </Link>
       )}
     </View>
   );

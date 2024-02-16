@@ -4,7 +4,7 @@ import { View, FlatList, SectionList, Text } from "react-native"
 import { Link } from "expo-router"
 
 // Importando dados de categorias da fonte de dados de produtos
-import { CATEGORIES, MENU } from "@/utils/data/products"
+import { CATEGORIES, MENU, ProductProps } from "@/utils/data/products"
 
 // Importando componentes personalizados
 import { Header } from "@/components/header"
@@ -19,7 +19,7 @@ export default function Home() {
   // Estado para armazenar a categoria selecionada
   const [category, setCategory] = useState(CATEGORIES[0])
 
-  const sectionListRef = useRef<SectionList>(null)
+  const sectionListRef = useRef<SectionList<ProductProps>>(null)
 
   const cartQuantityItems = cartStore.products.reduce((total, product) => total + product.quantity, 0 )
 
@@ -70,7 +70,7 @@ export default function Home() {
       stickySectionHeadersEnabled={false}
       renderItem={({ item }) => (
       <Link href={`/product/${item.id}`} asChild>
-        <Product data={item} /> 
+        <Product data={item} />
       </Link>
       )}
       renderSectionHeader={({ section: {title } }) =>  (
